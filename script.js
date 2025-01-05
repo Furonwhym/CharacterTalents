@@ -2,42 +2,46 @@
 const talentTrees = [
     {
         id: "tree1",
-        talents: createTalentTree()
+        talents: createTalentTree(),
+        backgroundImage: "Designs/PhysicalBackround.jpg"
     },
     {
         id: "tree2",
-        talents: createTalentTree()
+        talents: createTalentTree(),
+        backgroundImage: "Designs/MagicalBackround.jpg"
     },
     {
         id: "tree3",
-        talents: createTalentTree()
+        talents: createTalentTree(),
+        backgroundImage: "Designs/TankBackround.jpg"
     },
     {
         id: "tree4",
-        talents: createTalentTree()
+        talents: createTalentTree(),
+        backgroundImage: "Designs/HealBackround.jpg"
     }
 ];
 
 function createTalentTree() {
     return [
-        { id: 1, row: 1, unlocked: true, active: false, required: 2 },
-        { id: 2, row: 1, unlocked: true, active: false, required: 2 },
-        { id: 3, row: 1, unlocked: true, active: false, required: 2 },
-        { id: 4, row: 2, unlocked: false, active: false, required: 1 },
-        { id: 5, row: 2, unlocked: false, active: false, required: 1 },
-        { id: 6, row: 3, unlocked: false, active: false, required: 1 },
-        { id: 7, row: 3, unlocked: false, active: false, required: 1 },
-        { id: 8, row: 4, unlocked: false, active: false, required: 2 },
-        { id: 9, row: 4, unlocked: false, active: false, required: 2 },
-        { id: 10, row: 4, unlocked: false, active: false, required: 2 },
-        { id: 11, row: 5, unlocked: false, active: false, required: 1 },
-        { id: 12, row: 5, unlocked: false, active: false, required: 1 },
-        { id: 13, row: 6, unlocked: false, active: false, required: 1 },
-        { id: 14, row: 6, unlocked: false, active: false, required: 1 },
-        { id: 15, row: 7, unlocked: false, active: false, required: 2 },
-        { id: 16, row: 7, unlocked: false, active: false, required: 2 },
-        { id: 17, row: 7, unlocked: false, active: false, required: 2 },
-        { id: 18, row: 8, unlocked: false, active: false, required: 1 }
+        { id: 1, row: 1, unlocked: true, active: false, required: 2, image: "Physical1.png", description: "Talent 1 Beschreibung" },
+        { id: 2, row: 1, unlocked: true, active: false, required: 2, image: "talent2.png", description: "Talent 2 Beschreibung" },
+        { id: 3, row: 1, unlocked: true, active: false, required: 2, image: "talent3.png", description: "Talent 3 Beschreibung" },
+        { id: 4, row: 2, unlocked: false, active: false, required: 1, image: "talent4.png", description: "Talent 4 Beschreibung" },
+        { id: 5, row: 2, unlocked: false, active: false, required: 1, image: "talent5.png", description: "Talent 5 Beschreibung" },
+        { id: 6, row: 3, unlocked: false, active: false, required: 1, image: "talent6.png", description: "Talent 6 Beschreibung" },
+        { id: 7, row: 3, unlocked: false, active: false, required: 1, image: "talent7.png", description: "Talent 7 Beschreibung" },
+        { id: 8, row: 4, unlocked: false, active: false, required: 2, image: "talent8.png", description: "Talent 8 Beschreibung" },
+        { id: 9, row: 4, unlocked: false, active: false, required: 2, image: "talent9.png", description: "Talent 9 Beschreibung" },
+        { id: 10, row: 4, unlocked: false, active: false, required: 2, image: "talent10.png", description: "Talent 10 Beschreibung" },
+        { id: 11, row: 5, unlocked: false, active: false, required: 1, image: "talent11.png", description: "Talent 11 Beschreibung" },
+        { id: 12, row: 5, unlocked: false, active: false, required: 1, image: "talent12.png", description: "Talent 12 Beschreibung" },
+        { id: 13, row: 6, unlocked: false, active: false, required: 1, image: "talent13.png", description: "Talent 13 Beschreibung" },
+        { id: 14, row: 6, unlocked: false, active: false, required: 1, image: "talent14.png", description: "Talent 14 Beschreibung" },
+        { id: 15, row: 7, unlocked: false, active: false, required: 2, image: "talent15.png", description: "Talent 15 Beschreibung" },
+        { id: 16, row: 7, unlocked: false, active: false, required: 2, image: "talent16.png", description: "Talent 16 Beschreibung" },
+        { id: 17, row: 7, unlocked: false, active: false, required: 2, image: "talent17.png", description: "Talent 17 Beschreibung" },
+        { id: 18, row: 8, unlocked: false, active: false, required: 1, image: "talent18.png", description: "Talent 18 Beschreibung" }
     ];
 }
 
@@ -45,6 +49,9 @@ function renderTalentTrees() {
     talentTrees.forEach(tree => {
         const treeDiv = document.getElementById(tree.id);
         treeDiv.innerHTML = ""; // Clear tree
+        treeDiv.style.backgroundImage = `url('${tree.backgroundImage}')`; // Set individual background image
+        treeDiv.style.backgroundSize = "cover";
+        treeDiv.style.backgroundPosition = "center";
 
         const rows = {};
         tree.talents.forEach(talent => {
@@ -56,12 +63,38 @@ function renderTalentTrees() {
 
             const talentDiv = document.createElement("div");
             talentDiv.className = `talent ${talent.unlocked ? "unlocked" : "locked"} ${talent.active ? "active" : ""}`;
-            talentDiv.textContent = talent.id;
+            const talentImage = document.createElement("img");
+            talentImage.src = talent.image;
+            talentImage.alt = `Talent ${talent.id}`;
+            talentImage.style.width = "100%";
+            talentImage.style.height = "100%";
+            talentDiv.appendChild(talentImage);
 
-            talentDiv.addEventListener("click", () => toggleTalent(tree, talent.id));
+            talentDiv.addEventListener("click", () => {
+                toggleTalent(tree, talent.id);
+                showTalentDescription(talent);
+            });
 
             rows[talent.row].appendChild(talentDiv);
         });
+    });
+}
+
+function showTalentDescription(talent) {
+    const existingBubble = document.getElementById("talentBubble");
+    if (existingBubble) existingBubble.remove();
+
+    const bubble = document.createElement("div");
+    bubble.id = "talentBubble";
+    bubble.className = "talent-bubble";
+    bubble.innerHTML = `
+        <p>${talent.description}</p>
+        <button id="closeBubble">&times;</button>
+    `;
+    document.body.appendChild(bubble);
+
+    document.getElementById("closeBubble").addEventListener("click", () => {
+        bubble.remove();
     });
 }
 
@@ -78,16 +111,31 @@ function toggleTalent(tree, talentId) {
     } else {
         // Activate talent and check for unlocking next row
         talent.active = true;
-        const currentRow = tree.talents.filter(t => t.row === talent.row && t.active).length;
+    }
 
-        if (currentRow >= talent.required) {
+    updateTalentTreeUnlocks(tree);
+    renderTalentTrees();
+}
+
+function updateTalentTreeUnlocks(tree) {
+    // Reset all unlocks
+    tree.talents.forEach(t => {
+        if (t.row > 1) {
+            t.unlocked = false;
+        }
+    });
+
+    // Recalculate unlocks
+    for (let row = 1; row <= 8; row++) {
+        const currentRow = tree.talents.filter(t => t.row === row && t.active).length;
+        const requiredForNextRow = tree.talents.find(t => t.row === row)?.required || 1;
+
+        if (currentRow >= requiredForNextRow) {
             tree.talents
-                .filter(t => t.row === talent.row + 1)
+                .filter(t => t.row === row + 1)
                 .forEach(t => (t.unlocked = true));
         }
     }
-
-    renderTalentTrees();
 }
 
 renderTalentTrees();

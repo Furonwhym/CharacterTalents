@@ -16,7 +16,6 @@ header {
     color: rgba(230, 230, 230, 0); /* Schriftfarbe anpassen, damit sie gut sichtbar ist */
 }
 
-
 h1, h2 {
     margin: 0;
     padding: 10px 0;
@@ -89,7 +88,7 @@ section {
 
 .talent-tree {
     width: 90%;
-    background-color: #e3e3e3;
+    background-color: rgba(255, 255, 255, 0.8); /* Halbtransparenter Hintergrund */
     border: 2px solid #ccc;
     border-radius: 8px;
     padding: 10px;
@@ -114,6 +113,14 @@ section {
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.talent img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .talent.unlocked {
@@ -133,6 +140,38 @@ section {
 .talent.active {
     background-color: #FFD700;
     color: black;
+}
+
+/* Sprechblasen-Styling */
+.talent-bubble {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.talent-bubble p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.talent-bubble button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: red;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 /* Responsives Design */
