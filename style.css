@@ -9,7 +9,7 @@ body {
 
 header {
     text-align: center;
-    padding: 500px;
+    padding: 300px;
     background-image: url('Designs/Header.jpg'); /* Pfad zum Bild */
     background-size: cover; /* Skaliert das Bild, damit es den Header vollständig füllt */
     background-position: center; /* Zentriert das Bild */
