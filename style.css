@@ -1,0 +1,154 @@
+/* Allgemeines Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2c2828;
+    color: #000000;
+}
+
+header {
+    text-align: center;
+    padding: 215px;
+    background-image: url('Designs/Header.jpg'); /* Pfad zum Bild */
+    background-size: cover; /* Skaliert das Bild, damit es den Header vollständig füllt */
+    background-position: center; /* Zentriert das Bild */
+    color: rgba(230, 230, 230, 0); /* Schriftfarbe anpassen, damit sie gut sichtbar ist */
+}
+
+
+h1, h2 {
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling für den Charakterbogen */
+#characterSheet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px 10px; /* Kleinere Lücken zwischen den Feldern */
+    align-items: center;
+    margin-top: 10px; /* Abstand zur Überschrift */
+    background-image: url('Designs/Pergament.jpg'); /* URL zum Bild */
+    background-size: cover; /* Bild wird skaliert, um den Bereich zu füllen */
+    background-position: center; /* Bild wird zentriert */
+    border: 2px solid #ccc; /* Optional: Rahmen */
+    border-radius: 8px; /* Optional: Abgerundete Ecken */
+    padding: 20px; /* Abstand innerhalb des Bereichs */
+}
+
+#characterSheet label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#characterSheet .field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#characterSheet input, 
+#characterSheet textarea {
+    width: 100%;
+    max-width: 500px; /* Breite der Eingabefelder begrenzen */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#characterSheet textarea {
+    height: auto;
+    resize: vertical;
+    grid-column: span 2; /* Große Felder nehmen beide Spalten ein */
+}
+
+/* Styling für die Talentbäume */
+#talentTrees {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Abstand zwischen den Talentbaum-Spalten */
+    justify-items: center;
+    margin-top: 10px; /* Abstand zur Überschrift */
+    background-image: url('Designs/Pergament.jpg'); /* URL zum Bild */
+    background-size: cover; /* Bild wird skaliert, um den Bereich zu füllen */
+    background-position: center; /* Bild wird zentriert */
+    border: 2px solid #ccc; /* Optional: Rahmen */
+    border-radius: 8px; /* Optional: Abgerundete Ecken */
+    padding: 20px; /* Abstand innerhalb des Bereichs */
+}
+
+.talent-tree {
+    width: 90%;
+    background-color: #e3e3e3;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-rows: repeat(8, auto);
+    grid-gap: 10px;
+}
+
+.talent-tree .row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.talent {
+    width: 50px;
+    height: 50px;
+    background-color: lightgray;
+    border: 2px solid gray;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.talent.unlocked {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.talent.locked {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.talent:hover.unlocked {
+    transform: scale(1.1);
+}
+
+.talent.active {
+    background-color: #FFD700;
+    color: black;
+}
+
+/* Responsives Design */
+@media (max-width: 768px) {
+    #talentTrees {
+        grid-template-columns: 1fr; /* Eine Spalte für mobile Ansicht */
+    }
+
+    .talent-tree {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #characterSheet input, 
+    #characterSheet textarea {
+        max-width: 100%;
+    }
+}

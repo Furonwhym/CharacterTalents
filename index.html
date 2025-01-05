@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charakterbogen und Talentbäume</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Charakterbogen und Talentbäume</h1>
+    </header>
+
+    <!-- Charakterbogen -->
+    <section id="characterSheet">
+
+        <div class="field">
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+        </div>
+
+        <div class="field">
+            <label for="class">Klasse:</label>
+            <input type="text" id="class">
+        </div>
+
+        <div class="field">
+            <label for="level">Level:</label>
+            <input type="number" id="level">
+        </div>
+
+        <div class="field">
+            <label for="experience">Erfahrung:</label>
+            <input type="number" id="experience">
+        </div>
+
+        <div class="field">
+            <label for="strength">Stärke:</label>
+            <input type="number" id="strength">
+        </div>
+
+        <div class="field">
+            <label for="agility">Geschick:</label>
+            <input type="number" id="agility">
+        </div>
+
+        <div class="field">
+            <label for="intelligence">Intelligenz:</label>
+            <input type="number" id="intelligence">
+        </div>
+
+        <div class="field">
+            <label for="constitution">Konstitution:</label>
+            <input type="number" id="constitution">
+        </div>
+
+        <div class="field">
+            <label for="wisdom">Weisheit:</label>
+            <input type="number" id="wisdom">
+        </div>
+
+        <div class="field">
+            <label for="movement">Bewegung:</label>
+            <input type="number" id="movement">
+        </div>
+
+        <div class="field">
+            <label for="life">Leben:</label>
+            <input type="number" id="life">
+        </div>
+
+        <div class="field">
+            <label for="mana">Mana:</label>
+            <input type="number" id="mana">
+        </div>
+
+        <div class="field">
+            <label for="attack">Angriff:</label>
+            <input type="number" id="attack">
+        </div>
+
+        <div class="field">
+            <label for="armor">Rüstung:</label>
+            <input type="number" id="armor">
+        </div>
+
+        <div class="field">
+            <label for="gold">Gold:</label>
+            <input type="number" id="gold">
+        </div>
+
+        <div class="field">
+            <label for="ammunition">Munition:</label>
+            <input type="number" id="ammunition">
+        </div>
+
+        <div class="field">
+            <label for="other">Sonstiges:</label>
+            <textarea id="other" rows="4"></textarea>
+        </div>
+
+        <div class="field">
+            <label for="potions">Tränke & sonstiges:</label>
+            <textarea id="potions" rows="4"></textarea>
+        </div>
+
+        <div class="field">
+            <label for="armorDetails">Rüstung:</label>
+            <textarea id="armorDetails" rows="4"></textarea>
+        </div>
+
+        <div class="field">
+            <label for="weapons">Waffen:</label>
+            <textarea id="weapons" rows="4"></textarea>
+        </div>
+    </section>
+
+    <!-- Talentbäume -->
+    <section id="talentTrees">
+        <div class="talent-tree" id="tree1"></div>
+        <div class="talent-tree" id="tree2"></div>
+        <div class="talent-tree" id="tree3"></div>
+        <div class="talent-tree" id="tree4"></div>
+    </section>
+
+    <!-- Speicher- und Ladefunktion -->
+    <section id="controls">
+        <button id="saveButton">Speichern</button>
+        <button id="loadButton">Laden</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
