@@ -42,7 +42,7 @@ section {
     border: 2px solid #ccc;
     border-radius: 8px;
     padding: 20px;
-    max-width: 100%; /* Verhindert Überlappen */
+    max-width: 125%; /* Verhindert Überlappen */
     box-sizing: border-box;
 }
 
@@ -57,14 +57,14 @@ section {
 #characterSheet input,
 #characterSheet textarea {
     width: 100%;
-    max-width: 100%; /* Verhindert das Überlappen */
+    max-width: 125%; /* Verhindert das Überlappen */
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 /* Verbesserte Darstellung für mobile Geräte */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     #characterSheet {
         grid-template-columns: 1fr; /* Einzelne Spalte für kleine Bildschirme */
     }
@@ -174,7 +174,7 @@ section {
 }
 
 /* Responsives Design */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     #talentTrees {
         grid-template-columns: 1fr; /* Eine Spalte für mobile Ansicht */
     }
@@ -184,7 +184,7 @@ section {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1000px) {
     #characterSheet input, 
     #characterSheet textarea {
         max-width: 100%;
