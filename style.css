@@ -255,6 +255,7 @@ section {
 .equipment-column input[type="text"] {
     flex-grow: 1;
     width: 95%; /* Setze 100% für maximale Breite */
+    max-width: 400px; /* Erhöhe diesen Wert, wenn du noch mehr Breite willst */
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
