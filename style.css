@@ -268,7 +268,7 @@ section {
     #equipment {
         display: grid;
         grid-template-columns: repeat(2, 1fr); /* Bleibt in zwei Spalten */
-        gap: 75px; /* Kleinere Lücke zwischen den Spalten */
+        gap: 50px; /* Kleinere Lücke zwischen den Spalten */
         max-width: 100%; /* Passt sich der Bildschirmbreite an */
         padding: 15px;
     }
