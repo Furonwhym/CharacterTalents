@@ -191,3 +191,63 @@ section {
         max-width: 100%;
     }
 }
+
+#controls {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#controls button, .upload-label {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#controls button:hover, .upload-label:hover {
+    background-color: #45a049;
+}
+
+.upload-label {
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Ausrüstungsbereich */
+#equipment {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px;
+    margin-top: 20px;
+    padding: 50px;
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.equipment-column .field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.equipment-column input[type="text"] {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.equipment-column input[type="checkbox"] {
+    transform: scale(1.2);
+}

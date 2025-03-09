@@ -210,3 +210,210 @@ function updateTalentTreeUnlocks(tree) {
 }
 
 renderTalentTrees();
+
+function saveDataToLocalStorage() {
+    const data = {
+        character: {
+            name: document.getElementById("name").value,
+            class: document.getElementById("class").value,
+            level: document.getElementById("level").value,
+            experience: document.getElementById("experience").value,
+            strength: document.getElementById("strength").value,
+            agility: document.getElementById("agility").value,
+            intelligence: document.getElementById("intelligence").value,
+            constitution: document.getElementById("constitution").value,
+            wisdom: document.getElementById("wisdom").value,
+            movement: document.getElementById("movement").value,
+            life: document.getElementById("life").value,
+            mana: document.getElementById("mana").value,
+            attack: document.getElementById("attack").value,
+            armor: document.getElementById("armor").value,
+            gold: document.getElementById("gold").value,
+            ammunition: document.getElementById("ammunition").value,
+            other: document.getElementById("other").value,
+            potions: document.getElementById("potions").value,
+            armorDetails: document.getElementById("armorDetails").value,
+            weapons: document.getElementById("weapons").value
+        },
+        talentTrees: talentTrees.map(tree => ({
+            id: tree.id,
+            talents: tree.talents.map(t => ({ id: t.id, active: t.active }))
+        }))
+    };
+    localStorage.setItem("characterData", JSON.stringify(data));
+    alert("Daten erfolgreich in LocalStorage gespeichert!");
+}
+
+function loadDataFromLocalStorage() {
+    const data = JSON.parse(localStorage.getItem("characterData"));
+    if (!data) {
+        alert("Keine gespeicherten Daten gefunden.");
+        return;
+    }
+
+    // Lade die Charakterdaten
+    const character = data.character;
+    if (character) {
+        document.getElementById("name").value = character.name;
+        document.getElementById("class").value = character.class;
+        document.getElementById("level").value = character.level;
+        document.getElementById("experience").value = character.experience;
+        document.getElementById("strength").value = character.strength;
+        document.getElementById("agility").value = character.agility;
+        document.getElementById("intelligence").value = character.intelligence;
+        document.getElementById("constitution").value = character.constitution;
+        document.getElementById("wisdom").value = character.wisdom;
+        document.getElementById("movement").value = character.movement;
+        document.getElementById("life").value = character.life;
+        document.getElementById("mana").value = character.mana;
+        document.getElementById("attack").value = character.attack;
+        document.getElementById("armor").value = character.armor;
+        document.getElementById("gold").value = character.gold;
+        document.getElementById("ammunition").value = character.ammunition;
+        document.getElementById("other").value = character.other;
+        document.getElementById("potions").value = character.potions;
+        document.getElementById("armorDetails").value = character.armorDetails;
+        document.getElementById("weapons").value = character.weapons;
+    }
+
+    // Lade die Talentbäume
+    data.talentTrees.forEach(savedTree => {
+        const tree = talentTrees.find(t => t.id === savedTree.id);
+        if (tree) {
+            savedTree.talents.forEach(savedTalent => {
+                const talent = tree.talents.find(t => t.id === savedTalent.id);
+                if (talent) {
+                    talent.active = savedTalent.active;
+                }
+            });
+        }
+    });
+
+    renderTalentTrees();
+    alert("Daten erfolgreich aus LocalStorage geladen!");
+}
+
+function downloadBackup() {
+    const data = localStorage.getItem("characterData");
+    if (!data) {
+        alert("Keine gespeicherten Daten zum Download verfügbar.");
+        return;
+    }
+    const blob = new Blob([data], { type: "application/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "character_data_backup.json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+function uploadBackup(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            localStorage.setItem("characterData", JSON.stringify(data));
+            alert("Backup erfolgreich importiert!");
+            loadDataFromLocalStorage();
+        } catch (error) {
+            alert("Fehler beim Importieren der Datei.");
+        }
+    };
+    reader.readAsText(file);
+}
+document.getElementById("saveButton").addEventListener("click", saveDataToLocalStorage);
+document.getElementById("loadButton").addEventListener("click", loadDataFromLocalStorage);
+document.getElementById("backupButton").addEventListener("click", downloadBackup);
+document.getElementById("uploadBackup").addEventListener("change", uploadBackup);
+
+// Funktion zur Aktivierung/Deaktivierung von Waffengürtel und Rucksack
+function toggleEquipmentFields(toggleId, fieldPrefix, count) {
+    const toggle = document.getElementById(toggleId);
+    toggle.addEventListener("change", () => {
+        for (let i = 1; i <= count; i++) {
+            const field = document.getElementById(`${fieldPrefix}${i}`);
+            field.disabled = !toggle.checked;
+        }
+    });
+}
+
+// Initialisierung der Toggle-Funktion
+toggleEquipmentFields("weaponBeltToggle", "weaponBelt", 3);
+toggleEquipmentFields("backpackToggle", "backpack", 8);
+
+// Speicherung der neuen Felder in LocalStorage
+function saveEquipmentData() {
+    const data = {
+        head: document.getElementById("head").value,
+        torso: document.getElementById("torso").value,
+        back: document.getElementById("back").value,
+        arms: document.getElementById("arms").value,
+        ring: document.getElementById("ring").value,
+        weapon: document.getElementById("weapon").value,
+        shield: document.getElementById("shield").value,
+        bag: document.getElementById("bag").value,
+        weaponBeltToggle: document.getElementById("weaponBeltToggle").checked,
+        weaponBelt: [
+            document.getElementById("weaponBelt1").value,
+            document.getElementById("weaponBelt2").value,
+            document.getElementById("weaponBelt3").value
+        ],
+        backpackToggle: document.getElementById("backpackToggle").checked,
+        backpack: [
+            document.getElementById("backpack1").value,
+            document.getElementById("backpack2").value,
+            document.getElementById("backpack3").value,
+            document.getElementById("backpack4").value,
+            document.getElementById("backpack5").value,
+            document.getElementById("backpack6").value,
+            document.getElementById("backpack7").value,
+            document.getElementById("backpack8").value
+        ]
+    };
+    localStorage.setItem("equipmentData", JSON.stringify(data));
+}
+
+// Laden der gespeicherten Werte
+function loadEquipmentData() {
+    const data = JSON.parse(localStorage.getItem("equipmentData"));
+    if (!data) return;
+
+    document.getElementById("head").value = data.head;
+    document.getElementById("torso").value = data.torso;
+    document.getElementById("back").value = data.back;
+    document.getElementById("arms").value = data.arms;
+    document.getElementById("ring").value = data.ring;
+    document.getElementById("weapon").value = data.weapon;
+    document.getElementById("shield").value = data.shield;
+    document.getElementById("bag").value = data.bag;
+
+    document.getElementById("weaponBeltToggle").checked = data.weaponBeltToggle;
+    document.getElementById("backpackToggle").checked = data.backpackToggle;
+
+    for (let i = 0; i < 3; i++) {
+        document.getElementById(`weaponBelt${i + 1}`).value = data.weaponBelt[i];
+        document.getElementById(`weaponBelt${i + 1}`).disabled = !data.weaponBeltToggle;
+    }
+
+    for (let i = 0; i < 8; i++) {
+        document.getElementById(`backpack${i + 1}`).value = data.backpack[i];
+        document.getElementById(`backpack${i + 1}`).disabled = !data.backpackToggle;
+    }
+}
+
+// Speicher- und Lade-Funktion mit den neuen Equipment-Feldern verknüpfen
+document.getElementById("saveButton").addEventListener("click", () => {
+    saveDataToLocalStorage();
+    saveEquipmentData();
+});
+
+document.getElementById("loadButton").addEventListener("click", () => {
+    loadDataFromLocalStorage();
+    loadEquipmentData();
+});
+
+// Lade Equipment-Daten beim Start
+loadEquipmentData();
