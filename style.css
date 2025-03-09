@@ -235,12 +235,15 @@ section {
     gap: 100px;
     margin-top: 20px;
     padding: 50px;
+    max-width: 1000px; /* Falls der Bereich breiter werden soll */
     background: rgba(255, 255, 255, 0);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
 }
 
 .equipment-column {
+    width: 100%; /* Erlaubt die volle Breite */
+    max-width: 600px; /* Erhöhe diesen Wert nach Bedarf */
     display: flex;
     flex-direction: column;
     gap: 5px;
