@@ -30,45 +30,44 @@ section {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Styling für den Charakterbogen */
+/* Anpassung für das Character Sheet */
 #characterSheet {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 5px 10px; /* Kleinere Lücken zwischen den Feldern */
+    grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Gleichmäßige Spaltenbreite */
+    gap: 25px; /* Abstand zwischen den Spalten */
     align-items: center;
-    margin-top: 10px; /* Abstand zur Überschrift */
-    background-image: url('Designs/Pergament.jpg'); /* URL zum Bild */
-    background-size: cover; /* Bild wird skaliert, um den Bereich zu füllen */
-    background-position: center; /* Bild wird zentriert */
-    border: 2px solid #ccc; /* Optional: Rahmen */
-    border-radius: 8px; /* Optional: Abgerundete Ecken */
-    padding: 20px; /* Abstand innerhalb des Bereichs */
+    background-image: url('Designs/Pergament.jpg'); /* Hintergrundbild */
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 100%; /* Verhindert Überlappen */
+    box-sizing: border-box;
 }
 
-#characterSheet label {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
+/* Stellt sicher, dass alle Eingabefelder gleichmäßig verteilt sind */
 #characterSheet .field {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
-#characterSheet input, 
+/* Sorgt dafür, dass die Eingabefelder innerhalb des Hintergrunds bleiben */
+#characterSheet input,
 #characterSheet textarea {
     width: 100%;
-    max-width: 500px; /* Breite der Eingabefelder begrenzen */
+    max-width: 100%; /* Verhindert das Überlappen */
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-#characterSheet textarea {
-    height: auto;
-    resize: vertical;
-    grid-column: span 2; /* Große Felder nehmen beide Spalten ein */
+/* Verbesserte Darstellung für mobile Geräte */
+@media (max-width: 768px) {
+    #characterSheet {
+        grid-template-columns: 1fr; /* Einzelne Spalte für kleine Bildschirme */
+    }
 }
 
 /* Styling für die Talentbäume */
