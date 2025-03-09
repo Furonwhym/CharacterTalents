@@ -329,21 +329,6 @@ document.getElementById("loadButton").addEventListener("click", loadDataFromLoca
 document.getElementById("backupButton").addEventListener("click", downloadBackup);
 document.getElementById("uploadBackup").addEventListener("change", uploadBackup);
 
-// Funktion zur Aktivierung/Deaktivierung von Waffengürtel und Rucksack
-function toggleEquipmentFields(toggleId, fieldPrefix, count) {
-    const toggle = document.getElementById(toggleId);
-    toggle.addEventListener("change", () => {
-        for (let i = 1; i <= count; i++) {
-            const field = document.getElementById(`${fieldPrefix}${i}`);
-            field.disabled = !toggle.checked;
-        }
-    });
-}
-
-// Initialisierung der Toggle-Funktion
-toggleEquipmentFields("weaponBeltToggle", "weaponBelt", 3);
-toggleEquipmentFields("backpackToggle", "backpack", 8);
-
 // Speicherung der neuen Felder in LocalStorage
 function saveEquipmentData() {
     const data = {
@@ -355,13 +340,11 @@ function saveEquipmentData() {
         weapon: document.getElementById("weapon").value,
         shield: document.getElementById("shield").value,
         bag: document.getElementById("bag").value,
-        weaponBeltToggle: document.getElementById("weaponBeltToggle").checked,
         weaponBelt: [
             document.getElementById("weaponBelt1").value,
             document.getElementById("weaponBelt2").value,
             document.getElementById("weaponBelt3").value
         ],
-        backpackToggle: document.getElementById("backpackToggle").checked,
         backpack: [
             document.getElementById("backpack1").value,
             document.getElementById("backpack2").value,
@@ -390,18 +373,16 @@ function loadEquipmentData() {
     document.getElementById("shield").value = data.shield;
     document.getElementById("bag").value = data.bag;
 
-    document.getElementById("weaponBeltToggle").checked = data.weaponBeltToggle;
-    document.getElementById("backpackToggle").checked = data.backpackToggle;
-
     for (let i = 0; i < 3; i++) {
-        document.getElementById(`weaponBelt${i + 1}`).value = data.weaponBelt[i];
-        document.getElementById(`weaponBelt${i + 1}`).disabled = !data.weaponBeltToggle;
+        const field = document.getElementById(`weaponBelt${i + 1}`);
+        field.value = data.weaponBelt[i];
+        field.removeAttribute("disabled"); // Sicherstellen, dass es aktiv ist
     }
-
     for (let i = 0; i < 8; i++) {
-        document.getElementById(`backpack${i + 1}`).value = data.backpack[i];
-        document.getElementById(`backpack${i + 1}`).disabled = !data.backpackToggle;
-    }
+        const field = document.getElementById(`backpack${i + 1}`);
+        field.value = data.backpack[i];
+        field.removeAttribute("disabled"); // Sicherstellen, dass es aktiv ist
+    }    
 }
 
 // Speicher- und Lade-Funktion mit den neuen Equipment-Feldern verknüpfen

@@ -224,9 +224,9 @@ section {
     gap: 100px;
     margin-top: 20px;
     padding: 50px;
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
 }
 
 .equipment-column {
@@ -246,8 +246,4 @@ section {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-
-.equipment-column input[type="checkbox"] {
-    transform: scale(1.2);
 }
