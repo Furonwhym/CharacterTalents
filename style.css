@@ -70,7 +70,7 @@ section {
         flex-direction: column;
         align-items: center;
 	grid-template-columns: 1fr; /* Einzelne Spalte für kleine Bildschirme */
-        max-width: 100%; /* Falls es zu schmal ist, kannst du mit 95% testen */
+        max-width: 95%; /* Falls es zu schmal ist, kannst du mit 95% testen */
         padding: 15px; /* Falls der Hintergrund zu schmal aussieht */
     }
 
@@ -254,6 +254,7 @@ section {
 
 .equipment-column input[type="text"] {
     flex-grow: 1;
+    width: 95%; /* Setze 100% für maximale Breite */
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
