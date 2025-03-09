@@ -64,9 +64,10 @@ section {
 }
 
 /* Verbesserte Darstellung für mobile Geräte */
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
     #characterSheet {
         grid-template-columns: 1fr; /* Einzelne Spalte für kleine Bildschirme */
+        max-width: 95%; /* Erhöhe diesen Wert, falls nötig, z. B. auf 100% */
     }
 }
 
@@ -174,7 +175,7 @@ section {
 }
 
 /* Responsives Design */
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
     #talentTrees {
         grid-template-columns: 1fr; /* Eine Spalte für mobile Ansicht */
     }
@@ -184,7 +185,7 @@ section {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
     #characterSheet input, 
     #characterSheet textarea {
         max-width: 100%;
