@@ -235,7 +235,7 @@ section {
     gap: 100px;
     margin-top: 20px;
     padding: 50px;
-    max-width: 1000px; /* Falls der Bereich breiter werden soll */
+    max-width: 1200px; /* Falls der Bereich breiter werden soll */
     background: rgba(255, 255, 255, 0);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
@@ -257,9 +257,33 @@ section {
 
 .equipment-column input[type="text"] {
     flex-grow: 1;
-    width: 95%; /* Setze 100% für maximale Breite */
-    max-width: 400px; /* Erhöhe diesen Wert, wenn du noch mehr Breite willst */
+    width: 100%; /* Setze 100%, um die volle Breite der Spalte zu nutzen */
+    max-width: 500px; /* Erhöhe diesen Wert, wenn du noch mehr Breite willst */
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    #equipment {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Bleibt in zwei Spalten */
+        gap: 75px; /* Kleinere Lücke zwischen den Spalten */
+        max-width: 100%; /* Passt sich der Bildschirmbreite an */
+        padding: 15px;
+    }
+
+    .equipment-column {
+        width: 100%; /* Jede Spalte nimmt ihre Hälfte */
+        max-width: 100%; /* Verhindert eine Begrenzung */
+    }
+
+    .equipment-column .field {
+        width: 100%;
+    }
+
+    .equipment-column input[type="text"] {
+        width: 100%; /* Volle Breite der Spalte */
+        max-width: none; /* Entfernt Begrenzung */
+    }
 }
