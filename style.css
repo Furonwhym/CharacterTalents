@@ -66,10 +66,21 @@ section {
 /* Verbesserte Darstellung für mobile Geräte */
 @media (max-width: 768px) {
     #characterSheet {
-        grid-template-columns: 1fr; /* Einzelne Spalte für kleine Bildschirme */
-        max-width: 95%; /* Erhöhe diesen Wert, falls nötig, z. B. auf 100% */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+	grid-template-columns: 1fr; /* Einzelne Spalte für kleine Bildschirme */
+        max-width: 100%; /* Falls es zu schmal ist, kannst du mit 95% testen */
+        padding: 15px; /* Falls der Hintergrund zu schmal aussieht */
+    }
+
+    #characterSheet input, 
+    #characterSheet textarea {
+        max-width: 100%;
+        width: 100%;
     }
 }
+
 
 /* Styling für die Talentbäume */
 #talentTrees {
